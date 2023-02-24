@@ -6,13 +6,16 @@ import UserPosts from "./pages/UserPosts";
 import ViewPost from "./pages/ViewPost";
 import Register from "./pages/Register";
 import ProtectedRoutes from "./ProtectedRoutes";
+import RegisterSuccess from "./pages/RegisterSuccess";
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/register" element={<Register />}></Route>
+        <Route path="/register" element={<Register />}>
+          <Route path="success" element={<RegisterSuccess />} />
+        </Route>
         <Route path="/blog/view/:id" element={<ViewPost />}></Route>
         <Route path="/user" element={<UserPosts />}></Route>
         <Route path="/" element={<ProtectedRoutes />}>

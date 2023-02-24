@@ -23,11 +23,11 @@ function Cards(props: CardProps) {
       <div className="card-body">
         <h2 className="card-title text-3xl">{props.postData.title}</h2>
         {/* <p className="text-start">{props.postData.body}</p> */}
-        <div className="card-actions justify-end pt-4">
-          <button onClick={viewPost} className="btn btn-info-content">
-            View
-          </button>
-        </div>
+      </div>
+      <div className="card-actions justify-end p-4">
+        <button onClick={viewPost} className="btn btn-primary">
+          View
+        </button>
       </div>
     </div>
   );

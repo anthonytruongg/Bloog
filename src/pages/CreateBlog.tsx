@@ -9,14 +9,29 @@ import CreateBlogMobile from "../pages_mobile/CreateBlogMobile";
 function CreateBlog() {
   const [tag, setTag] = useState("");
   const [tagArray, setTagArray] = useState<string[]>([]);
+  const [message, setMessage] = useState("");
+
+  const colorArr = [
+    "badge badge-primary",
+    "badge badge-secondary",
+    "badge badge-accent",
+    "badge badge-success",
+  ];
 
   function addTag(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (tagArray.length === 4) {
+      setMessage("You have reached the maximum limit!");
+      return;
+    }
+
     setTagArray([...tagArray, tag]);
     setTag("");
   }
 
   function removeTag(tagRemove: string) {
+    // removes the message here
+    setMessage("");
     const filterArr = tagArray.filter((tag) => tag !== tagRemove);
     console.log(filterArr);
     setTagArray(filterArr);
@@ -76,17 +91,16 @@ function CreateBlog() {
               </form>
               <div className="grid grid-cols-10 p-10 gap-2">
                 {tagArray.length > 0 ? <h1>Your special tags.</h1> : null}
-                {tagArray.map((tag, index) => {
-                  return (
-                    <span
-                      key={index}
-                      className="badge badge-primary"
-                      onClick={() => removeTag(tag)}
-                    >
-                      {tag}
-                    </span>
-                  );
-                })}
+                {tagArray.map((tag, index) => (
+                  <span
+                    key={index}
+                    className={colorArr[index % colorArr.length]}
+                    onClick={() => removeTag(tag)}
+                  >
+                    {tag}
+                  </span>
+                ))}
+                <span className="text-center">{message}</span>
               </div>
             </div>
           </div>
