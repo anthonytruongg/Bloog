@@ -7,54 +7,38 @@ import api from "../components/APIinstance";
 
 type UserProps = {
   username: string;
-  email: string;
   password: string;
 };
 
-function Register() {
+function Login() {
   const navigate = useNavigate();
-  const [username, setUsername] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [toggle, setToggle] = useState("password");
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [successMessage, setSuccessMessage] = useState<string>("");
 
   const [userData, setUserData] = useState<UserProps>({
     username: "",
-    email: "",
     password: "",
   });
 
-  function toggleShow() {
-    if (toggle === "password") {
-      setToggle("text");
-    }
-    if (toggle === "text") {
-      setToggle("password");
-    }
-  }
-  // note to myself, pls finish the register success component :D and set up nodemailer :D
-  // backend is all gucci to go
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     console.log(userData);
     setErrorMessage("");
     setSuccessMessage("");
-    if (username && email && password) {
+    if (email && password) {
       await api
-        .post("/api/user/new", {
-          username: username,
-          password: password,
+        .post("/api/user/login", {
           email: email,
+          password: password,
         })
         .then((res) => {
-          console.log("response", res);
+          //   console.log("response", res);
           setSuccessMessage(res.data);
-          navigate("/register/success");
         })
         .catch((err) => {
-          console.log("error", err.response.data);
+          //   console.log("error", err.response.data);
           setErrorMessage(err.response.data);
         });
     } else {
@@ -85,7 +69,9 @@ function Register() {
               placeholder="password"
               className="input input-bordered input-primary w-full max-w-xs bg-gray-700"
             />
-            <button className="btn btn-primary w-full max-w-xs">Login</button>
+            <button className="btn btn-primary w-full max-w-xs">
+              Register
+            </button>
           </div>
         </div>
       ) : (
@@ -95,31 +81,15 @@ function Register() {
         >
           <div className="hero-content flex-col lg:flex-row-reverse">
             <div className="text-center lg:text-left">
-              <h1 className="text-5xl font-bold">
-                Share your opinions on Bloog!
-              </h1>
-              <p className="py-6">
-                Bloog is a website that allows users to post whatever
-                opinion/view they want. The only catch is, if the others do not
-                like your post, it will be removed.
+              <h1 className="text-5xl font-bold">Hey there, welcome back</h1>
+              <p className="py-10">
+                By continuing, you’re agreeing to our Terms of Service, Privacy
+                Policy, and Cookie Policy.
               </p>
-              <p className="py-6">The power belongs in the users!</p>
             </div>
             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-300">
               <div className="card-body">
                 <form onSubmit={handleSubmit}>
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">Username</span>
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="username"
-                      className="input input-bordered"
-                      value={username}
-                      onChange={(e) => setUsername(e.target.value)}
-                    />
-                  </div>
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text">Email</span>
@@ -137,7 +107,7 @@ function Register() {
                       <span className="label-text">Password</span>
                     </label>
                     <input
-                      type={toggle}
+                      type="password"
                       placeholder="password"
                       className="input input-bordered"
                       value={password}
@@ -149,15 +119,6 @@ function Register() {
                     <span className="text-emerald-300 font-circular font-bold pt-2 text-center">
                       {successMessage}
                     </span>
-                    <div className="flex gap-2 pt-2">
-                      <input type="checkbox" onClick={toggleShow} />
-                      <label
-                        htmlFor=""
-                        className="text-sm font-light font-Jost"
-                      >
-                        Show password
-                      </label>
-                    </div>
                     <label className="label">
                       <a href="#" className="label-text-alt link link-hover">
                         Forgot password?
@@ -170,17 +131,17 @@ function Register() {
                       className="btn btn-primary"
                       onClick={() => handleSubmit}
                     >
-                      Register
+                      Login
                     </button>
                   </div>
                   <div className="form-control mt-6 text-center">
                     <p>
-                      Already have an account?{" "}
+                      Don't have an account?{" "}
                       <span
                         className="font-bold cursor-pointer"
-                        onClick={() => navigate("/login")}
+                        onClick={() => navigate("/register")}
                       >
-                        Log in
+                        Register
                       </span>
                     </p>
                   </div>
@@ -194,4 +155,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default Login;
