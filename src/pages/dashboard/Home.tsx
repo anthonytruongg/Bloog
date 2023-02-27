@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Card from "../../components/Cards";
 import Title from "../../components/Title";
 import Layout from "../../components/Layout";
 import api from "../../components/APIinstance";
 import { isMobile } from "react-device-detect";
+import { UserContext } from "../../context/UserContext";
 
 type PostData = {
   title: string;
@@ -15,8 +16,6 @@ type PostData = {
 
 function Home() {
   const [postArray, setPostArray] = useState([]);
-
-  const user = "gigg";
 
   async function fetchPosts() {
     await api
@@ -38,7 +37,7 @@ function Home() {
   return (
     <Layout>
       <div className="flex flex-col items-center justify-center text-start gap-4">
-        <Title title={`Hello ${user}. This is what we've got for you today.`} />
+        <Title title={`Hello. This is what we've got for you today.`} />
         <p className="font-semibold">
           Some posts you may .... or may not like.
         </p>

@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 import Home from "../pages/dashboard/Home";
 
 // function ProtectedRoutes() {
@@ -39,10 +40,23 @@ import Home from "../pages/dashboard/Home";
 
 // export default ProtectedRoutes;
 
-const useAuth = () => {
-  const user = { isLoggedIn: true };
+// const useAuth = () => {
+//   const user = { isLoggedIn: true };
+//   const userContext = useContext(UserContext);
 
-  return user && user.isLoggedIn;
+//   return user && user.isLoggedIn;
+// };
+// function ProtectedRoutes() {
+//   const isAuth = useAuth();
+//   return isAuth ? <Outlet /> : <Home />;
+// }
+
+// export default ProtectedRoutes;
+
+const useAuth = () => {
+  const userContext = useContext(UserContext);
+
+  return userContext.user?.email;
 };
 function ProtectedRoutes() {
   const isAuth = useAuth();

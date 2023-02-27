@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Title from "../../components/Title";
 import { isMobile } from "react-device-detect";
 import BGdesktop from "../../assets/desktop.png";
 import api from "../../components/APIinstance";
+import { UserContext } from "../../context/UserContext";
 
 type UserProps = {
   username: string;
@@ -22,12 +23,18 @@ function Login() {
     password: "",
   });
 
+  const userContext = useContext(UserContext);
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log(userData);
+
     setErrorMessage("");
     setSuccessMessage("");
     if (email && password) {
+      userContext.setUser({
+        email: email,
+      });
+      console.log(userContext);
       await api
         .post("/api/user/login", {
           email: email,
@@ -36,6 +43,9 @@ function Login() {
         .then((res) => {
           //   console.log("response", res);
           setSuccessMessage(res.data);
+          setTimeout(() => {
+            navigate("/user");
+          }, 2000);
         })
         .catch((err) => {
           //   console.log("error", err.response.data);
@@ -47,8 +57,8 @@ function Login() {
   }
 
   useEffect(() => {
-    // setUser();
-  }, []);
+    console.log(userContext);
+  });
 
   return (
     <>

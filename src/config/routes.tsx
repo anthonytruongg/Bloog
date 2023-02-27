@@ -9,36 +9,44 @@ import Login from "../pages/login/Login";
 type RouteProps = {
   path: string;
   element: React.ReactNode;
+  isPrivate: boolean;
 }[];
 
 const routes: RouteProps = [
   {
     path: "/",
     element: <Home />,
+    isPrivate: false,
   },
   {
     path: "/login",
     element: <Login />,
+    isPrivate: false,
   },
   {
     path: "/register",
     element: <Register />,
+    isPrivate: false,
   },
   {
     path: "/register/success",
     element: <Success />,
+    isPrivate: false,
   },
   {
     path: "/blog/view/:id",
     element: <ViewPost />,
+    isPrivate: false,
   },
   {
     path: "/user",
     element: <UserPosts />,
+    isPrivate: true,
   },
   {
     path: "/create",
     element: <CreateBlog />,
+    isPrivate: true,
   },
 ];
 
