@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Title from "../components/Title";
+import Title from "../../components/Title";
 import { isMobile } from "react-device-detect";
-import BGdesktop from "../assets/desktop.png";
-import api from "../components/APIinstance";
+import BGdesktop from "../../assets/desktop.png";
+import api from "../../components/APIinstance";
 
 type UserProps = {
   username: string;

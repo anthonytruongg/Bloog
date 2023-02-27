@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Card from "../components/Cards";
-import Title from "../components/Title";
-import Layout from "../components/Layout";
-import api from "../components/APIinstance";
+import Card from "../../components/Cards";
+import Title from "../../components/Title";
+import Layout from "../../components/Layout";
+import api from "../../components/APIinstance";
 import { isMobile } from "react-device-detect";
 
 type PostData = {

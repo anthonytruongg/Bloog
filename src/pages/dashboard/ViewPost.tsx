@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import Layout from "../components/Layout";
-import Comment from "../components/Comment";
-import api from "../components/APIinstance";
+import Layout from "../../components/Layout";
+import Comment from "../../components/Comment";
+import api from "../../components/APIinstance";
 import { HiOutlineUser } from "react-icons/hi";
 import { isMobile } from "react-device-detect";
 
@@ -66,12 +66,7 @@ function ViewPost() {
                   <HiOutlineUser /> {author}
                 </h1>
                 <h2 className="card-title text-2xl">{postData.title}</h2>
-                <p className="text-xl">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Fugiat tempore ducimus tenetur asperiores ea, illo dicta
-                  delectus reiciendis quisquam, iste nihil, voluptas atque
-                  pariatur quae quia sit accusamus perferendis officiis!
-                </p>
+                <p className="text-xl">{postData.body}</p>
 
                 <div className="card-actions justify-between">
                   <div className="flex gap-2">
@@ -97,12 +92,7 @@ function ViewPost() {
                 <HiOutlineUser /> {author}
               </h1>
               <h2 className="card-title text-4xl">{postData.title}</h2>
-              <p className="text-3xl">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat
-                tempore ducimus tenetur asperiores ea, illo dicta delectus
-                reiciendis quisquam, iste nihil, voluptas atque pariatur quae
-                quia sit accusamus perferendis officiis!
-              </p>
+              <p className="text-3xl">{postData.body}</p>
               <div className="card-actions justify-between">
                 <div className="flex gap-2">
                   <button className="btn btn-sm btn-accent">Like</button>

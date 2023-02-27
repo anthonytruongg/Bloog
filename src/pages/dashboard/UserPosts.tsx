@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import Layout from "../components/Layout";
-import Title from "../components/Title";
-import api from "../components/APIinstance";
+import Layout from "../../components/Layout";
+import Title from "../../components/Title";
+import api from "../../components/APIinstance";
 
 function UserPosts() {
   async function getUserPosts() {}

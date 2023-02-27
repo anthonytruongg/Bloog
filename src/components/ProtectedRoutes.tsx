@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
-import Home from "./pages/Home";
+import Home from "../pages/dashboard/Home";
 
 // function ProtectedRoutes() {
 //   const navigate = useNavigate();

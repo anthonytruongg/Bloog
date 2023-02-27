@@ -1,10 +1,10 @@
 import React, { useState, FormEvent } from "react";
-import Navbar from "../components/SideNav";
-import NavTwo from "../components/TopNav";
-import Title from "../components/Title";
-import Layout from "../components/Layout";
+import Navbar from "../../components/SideNav";
+import NavTwo from "../../components/TopNav";
+import Title from "../../components/Title";
+import Layout from "../../components/Layout";
 import { isMobile } from "react-device-detect";
-import CreateBlogMobile from "../pages_mobile/CreateBlogMobile";
+import CreateBlogMobile from "../../pages_mobile/CreateBlogMobile";
 
 function CreateBlog() {
   const [tag, setTag] = useState("");

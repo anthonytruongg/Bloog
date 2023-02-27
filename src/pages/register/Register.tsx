@@ -1,15 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Title from "../components/Title";
+import Title from "../../components/Title";
 import { isMobile } from "react-device-detect";
-import BGdesktop from "../assets/desktop.png";
-import api from "../components/APIinstance";
-
-type UserProps = {
-  username: string;
-  email: string;
-  password: string;
-};
+import BGdesktop from "../../assets/desktop.png";
+import api from "../../components/APIinstance";
 
 function Register() {
   const navigate = useNavigate();
@@ -19,12 +13,6 @@ function Register() {
   const [toggle, setToggle] = useState("password");
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [successMessage, setSuccessMessage] = useState<string>("");
-
-  const [userData, setUserData] = useState<UserProps>({
-    username: "",
-    email: "",
-    password: "",
-  });
 
   function toggleShow() {
     if (toggle === "password") {
@@ -38,7 +26,6 @@ function Register() {
   // backend is all gucci to go
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log(userData);
     setErrorMessage("");
     setSuccessMessage("");
     if (username && email && password) {
