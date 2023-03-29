@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../components/APIinstance";
+import { api } from "../components/APIinstance";
 type CommentProps = {
   commentData: {
     userId: string;

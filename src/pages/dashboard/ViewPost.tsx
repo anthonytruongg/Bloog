@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Layout from "../../components/Layout";
 import Comment from "../../components/Comment";
-import api from "../../components/APIinstance";
+import { api } from "../../components/APIinstance";
 import { HiOutlineUser } from "react-icons/hi";
 import { isMobile } from "react-device-detect";
 

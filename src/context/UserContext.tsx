@@ -2,6 +2,8 @@ import React, { createContext, useState } from "react";
 
 type AuthUser = {
   email: string;
+  accessToken: string;
+  username: string;
 };
 
 type UserContextProviderType = {

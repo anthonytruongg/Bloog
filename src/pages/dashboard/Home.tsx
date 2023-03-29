@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Card from "../../components/Cards";
 import Title from "../../components/Title";
 import Layout from "../../components/Layout";
-import api from "../../components/APIinstance";
+import { api } from "../../components/APIinstance";
 import { isMobile } from "react-device-detect";
 import { UserContext } from "../../context/UserContext";
 

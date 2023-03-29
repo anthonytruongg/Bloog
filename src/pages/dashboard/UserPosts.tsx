@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import Layout from "../../components/Layout";
 import Title from "../../components/Title";
-import api from "../../components/APIinstance";
+import { api } from "../../components/APIinstance";
 import { UserContext } from "../../context/UserContext";
 
 function UserPosts() {

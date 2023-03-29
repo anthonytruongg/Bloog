@@ -3,13 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Title from "../../components/Title";
 import { isMobile } from "react-device-detect";
 import BGdesktop from "../../assets/desktop.png";
-import api from "../../components/APIinstance";
+import { api } from "../../components/APIinstance";
 import { UserContext } from "../../context/UserContext";
-
-type UserProps = {
-  username: string;
-  password: string;
-};
 
 function Login() {
   const navigate = useNavigate();
@@ -17,11 +12,6 @@ function Login() {
   const [password, setPassword] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [successMessage, setSuccessMessage] = useState<string>("");
-
-  const [userData, setUserData] = useState<UserProps>({
-    username: "",
-    password: "",
-  });
 
   const userContext = useContext(UserContext);
 
@@ -31,8 +21,11 @@ function Login() {
     setErrorMessage("");
     setSuccessMessage("");
     if (email && password) {
+      // setting user context
       userContext.setUser({
         email: email,
+        username: "giggxd",
+        accessToken: "secret key",
       });
       console.log(userContext);
       await api

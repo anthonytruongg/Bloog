@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Title from "../../components/Title";
 import { isMobile } from "react-device-detect";
 import BGdesktop from "../../assets/desktop.png";
-import api from "../../components/APIinstance";
+import { api } from "../../components/APIinstance";
 
 function Register() {
   const navigate = useNavigate();
